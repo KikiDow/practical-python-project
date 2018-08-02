@@ -1,0 +1,21 @@
+
+<html>
+
+<head>
+    <title>Hello Flask</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('scoreboard') }}">Scoreboard</a></li>
+        </ul>
+    </nav>
+
+    {% block content %} {% endblock %}
+</body>
+
+</html>
