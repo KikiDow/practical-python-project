@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "source": "curiosity-1.jpg",
+        "answer": "the third one"
+    },
+    {
+        "id": 2,
+        "source": "curiosity-2.jpg",
+        "answer": "your left hand"
+    },
+    {
+        "id": 3,
+        "source": "curiosity-3.jpg",
+        "answer": "the poison was in the ice"
+    },
+    {
+        "id": 4,
+        "source": "curiosity-4.jpg",
+        "answer": "78"
+    },
+    {
+        "id": 5,
+        "source": "curiosity-5.jpg",
+        "answer": "a window"
+    },
+    {
+        "id": 6,
+        "source": "curiosity-6.jpg",
+        "answer": "a stamp"
+    },
+    {
+        "id": 7,
+        "source": "curiosity-7.jpg",
+        "answer": "australia"
+    },
+    {
+        "id": 8,
+        "source": "curiosity-8.jpg",
+        "answer": "mount rushmore"
+    },
+    {
+        "id": 9,
+        "source": "curiosity-9.jpg",
+        "answer": "short"
+    },
+    {
+        "id": 10,
+        "source": "curiosity-10.jpg",
+        "answer": "an anchor"
+    }]
