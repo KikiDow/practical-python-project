@@ -7,7 +7,7 @@
             <form method="POST" class="pure-form" action="/register">
                 <input type="text" class="pure-input-rounded" name="username" id="username" placeholder="Username" value={{ app_info["username"] }}>
                 <button type="submit" class="btn btn-primary {{ app_info["check_availability_active"] }}" name="check_availability">Check Availability</button>
-                <p class="feedback">{{ register_feedback }}</p>
+                <p class="feedback lead">{{ register_feedback }}</p>
                 <button type="submit" class="btn btn-primary {{ app_info["register_button_active"] }}" name="{{ app_info["register"] }}" value="register">Register</button> 
             </form>
         </div>
