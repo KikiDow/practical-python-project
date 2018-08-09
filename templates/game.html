@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Let's Play</h1>
+          <div class="row">
+              <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6"><h3>{{ app_info["username"] }}</h3></div>
+                        <div class="col-md-6"><p>Riddle {{ riddle_counter }} of 10</p></div>
+                    </div>
+                    <div class="code_inst">
+                        <img class="img-responsive" src="static/img/{{ current_riddle[1] }}" alt="riddle image"></img>
+                    </div>
+                    <p>Type your answer and press Submit button. Otherwise Pass.</p>
+              </div>
+              <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p>Points: {{ gained_points }}</p>
+                            <p>{% if attempt == 1 %}First 
+                            {% elif attempt == 2 %}Second 
+                            {% elif attempt == 3 %}Third 
+                            {% endif %}attempt: {{ points }} points</p>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <form class="pure-form" method="POST" action="/game">
+                                <div class="form-group">
+                                    {% if attempt == 1 %}
+                                    <div class="row text-area">
+                                        <textarea class="form-control" name="answer_text" rows="10" id="answer_block" placeholder="Type your answer here"></textarea>
+                                    </div>
+                                    {% elif attempt == 2 %}
+                                        <div class="row text-area">
+                                            {% set words = (current_riddle[2]).split() %}
+                                            {% set word_count = words|count %}
+                                            {% for word in words %}
+                                                <div class="row">
+                                                    <div class="col-xs-2 col-sm-3"><label>Word {{ loop.index }}</label></div>
+                                                    <div class="col-xs-10 col-sm-9">
+                                                        <textarea class="form-control" name="answer_text{{ loop.index }}" rows="1" id="answer_block{{ loop.index }}" placeholder="type word {{ loop.index }} here"></textarea>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            <div class="row">
+                                                <div><p>First WRONG answer: {{ wrong_answers[0] }}</p></div>
+                                                <p>The answer for this riddle has {{ word_count }} 
+                                                {% if (word_count) == 1 %}
+                                                word.
+                                                {% elif (word_count) > 1 %}
+                                                words.
+                                                {% endif %}</p>
+                                            </div>
+                                        </div>
+                                    {% elif attempt == 3 %}
+                                        <div class="row text-area">
+                                            {% set words = (current_riddle[2]).split() %}
+                                            {% set word_count = words|count %}
+                                            {% for word in words %}
+                                                <div class="row">
+                                                    <div class="col-xs-2 col-sm-3"><label>Word {{ loop.index }}</label></div>
+                                                    <div class="col-xs-9 col-sm-8">
+                                                        <textarea class="form-control" name="answer_text{{ loop.index }}" rows="1" id="answer_block{{ loop.index }}" placeholder="type word {{ loop.index }} here"></textarea>
+                                                    </div>
+                                                    <div class="col-xs-1 col-sm-1">
+                                                        <label>
+                                                            {% set length = word|length %}
+                                                            {{ length }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            <div class="row">
+                                                <div>
+                                                    <p>First WRONG answer: {{ wrong_answers[0] }}</p>
+                                                    <p>Second WRONG answer: {{ wrong_answers[1] }}</p>
+                                                </div>
+                                                <p>The answer for this riddle has {{ word_count }} 
+                                                {% if (word_count) == 1 %}
+                                                word.
+                                                {% elif (word_count) > 1 %}
+                                                words.
+                                                {% endif %}<br>See the indicated number of letters.</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+{% endblock %}

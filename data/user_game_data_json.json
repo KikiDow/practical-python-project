@@ -1,0 +1,15 @@
+{
+    "test_user": {
+        "date_best_game": "08/04/2018",
+        "games_played": [
+            [
+                "08/04/2018",
+                30
+            ]
+        ],
+        "number_of_games": 6,
+        "points_best_game": 30,
+        "total_user_points": 80,
+        "user": "test_user"
+    }
+}

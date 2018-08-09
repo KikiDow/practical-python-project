@@ -2,7 +2,41 @@
 <div class="row">
         <div class="col-lg-12 text-center">
           <h1 class="mt-5">Home Page</h1>
-          <p>Welcome {{ username_feedback }}</p>
+          <p class="lead">Welcome {{ username_feedback }}</p>
+          <p>{{ username_feedback }}, this is your home page in "Riddle Me This". From here you can start a new game and check out your scores fom previous games.</p>
+          <p>You have played {{ user_data["number_of_games"] }} games to date.</p>
+          <p>{% if user_data["number_of_games"] > 0 %}
+            Your best game was on {{ user_data["date_best_game"] }} when you scored {{ user_data["points_best_game"] }} Points.
+            {% endif %}</p>
+          <p>The total number of points you have scored in all games played is 
+            {{ user_data["total_user_points"] }} Points.</p>
+            <div class="row">
+              <div class="col-md-6">
+                <table class="pure-table pure-table-horizontal">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Score</th>
+                    </tr>
+                  </thead>
+                   <tbody>
+                        {% for item in user_data["games_played"] %}
+                            <tr>
+                                <th scope="row">{{ item[0] }}</td>
+                                <td>{{ item[1] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="col-md-6">
+                <form class="pure-form" method="POST" action="/game">
+                  <div class="form-group">
+                    <button type="submit" class="pure-btn btn-primary" name="play" type="submit" value="play">Play a Game of "Riddle Me This"</button>
+                  </div>
+                </form>
+              </div>
+            </div>
         </div>
       </div>
 {% endblock %}
